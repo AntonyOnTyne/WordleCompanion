@@ -46,12 +46,12 @@
 
       <div class="action-area">
         <p class="game-status" id="game-status" aria-live="polite">Loading dictionary…</p>
-        <p class="clipboard-fallback" id="clipboard-fallback" role="status" aria-live="polite" hidden>Clipboard access isn’t available. Copy <strong id="clipboard-word"></strong> manually for your sixth Wordle guess.</p>
+        <p class="clipboard-fallback" id="clipboard-fallback" role="status" aria-live="polite" hidden>Clipboard access isn’t available. Copy <strong id="clipboard-word"></strong> manually for your next Wordle guess.</p>
         <button class="reset-button" id="reset-button" type="button" disabled>Reset</button>
       </div>
     </section>
 
-  <footer>Use the colours from your Wordle guesses to narrow the list.<span class="version-number">v0.3</span></footer>
+  <footer>Use the colours from your Wordle guesses to narrow the list.<span class="version-number">v0.4</span></footer>
   </main>
 
   <div class="modal-backdrop" id="instructions-backdrop" hidden>
@@ -70,7 +70,7 @@
         <section class="instruction-section" aria-labelledby="guess-heading">
           <h3 id="guess-heading">Enter a guess</h3>
           <ul>
-            <li>Type your 5ive-letter Wordle guess using your physical or the on-screen keyboard. Backspace removes the last letter.</li>
+            <li>Type your five-letter Wordle guess using your physical or the on-screen keyboard. Backspace removes the last letter.</li>
             <li>Press Enter to submit. If the word isn’t in my dictionary, the row shakes and stays editable.</li>
           </ul>
         </section>
@@ -87,8 +87,8 @@
           <h3 id="words-heading">Narrow the list</h3>
           <ul>
             <li>The eliminated and remaining word counts update after each valid guess and every tile-colour change.</li>
-            <li>Choose Show words to view the remaining words alphabetically in a scrollable list. Tap a word to submit it as your next companion guess.</li>
-            <li>After five rows, tap a remaining word to copy it for your sixth Wordle guess.</li>
+            <li>Choose Show words to view the remaining words alphabetically in a scrollable list. Tapping a word copies it to your clipboard for your next Wordle guess.</li>
+            <li>Before row five, the selected word also fills and submits the next companion row. After row five, tapping a word copies a suggestion for your sixth Wordle guess without changing the board.</li>
           </ul>
         </section>
       </div>

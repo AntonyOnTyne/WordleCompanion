@@ -578,7 +578,6 @@
     try {
       if (typeof navigator.clipboard?.writeText !== "function") throw new Error("Clipboard is unavailable.");
       await navigator.clipboard.writeText(word);
-      showToast(`Copied ${word}. Paste it as your sixth Wordle guess.`);
     } catch {
       clipboardWord.textContent = word;
       clipboardFallback.hidden = false;
@@ -606,6 +605,7 @@
     setGameStatus("");
     updateApp();
     submitGuess();
+    await copyCandidate(word);
   }
 
   function resetGame() {
