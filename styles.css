@@ -289,8 +289,6 @@ html.gameplay-active { touch-action: pan-x pan-y; }
 
 .action-area { margin-top: 14px; text-align: center; }
 .game-status { min-height: 17px; margin: 0 0 10px; color: var(--muted); font-size: 11px; }
-.clipboard-fallback { margin: 0 0 10px; padding: 10px 12px; border: 1px solid #d6c58a; border-radius: 9px; background: #f5f0dc; color: var(--ink); font-size: 12px; line-height: 1.5; }
-.clipboard-fallback strong { display: block; margin-top: 4px; color: var(--accent); font-size: 20px; letter-spacing: .12em; }
 
 .reset-button {
   min-height: 42px;

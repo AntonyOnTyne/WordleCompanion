@@ -28,8 +28,6 @@
   const toggleWordsButton = document.getElementById("toggle-words");
   const wordListElement = document.getElementById("word-list");
   const gameStatus = document.getElementById("game-status");
-  const clipboardFallback = document.getElementById("clipboard-fallback");
-  const clipboardWord = document.getElementById("clipboard-word");
   const resetButton = document.getElementById("reset-button");
   const toast = document.getElementById("toast");
 
@@ -276,7 +274,9 @@
   }
 
   function canChooseCandidate() {
-    return loaded;
+    if (!loaded || activeRowIndex === null) return false;
+    const phase = rows[activeRowIndex].phase;
+    return phase === "input" || (phase === "check" && activeRowIndex < ROW_COUNT - 1);
   }
 
   function renderWordList() {
@@ -304,11 +304,7 @@
       button.className = "candidate-word";
       button.textContent = word;
       button.disabled = !canChoose;
-      const copiesWord = activeRowIndex === null ||
-        (activeRowIndex === ROW_COUNT - 1 && rows[activeRowIndex].phase === "check");
-      button.setAttribute("aria-label", copiesWord
-        ? `Copy ${word} for your sixth Wordle guess`
-        : `Select ${word} and submit it as your next companion guess`);
+      button.setAttribute("aria-label", `Select ${word} and submit it as your next companion guess`);
       button.addEventListener("click", () => selectCandidate(word));
       entry.append(button);
       fragment.append(entry);
@@ -337,8 +333,6 @@
   }
 
   function updateApp() {
-    clipboardFallback.hidden = true;
-    clipboardWord.textContent = "";
     if (loaded) candidates = dictionary.filter(fitsAllClues);
     renderBoard();
     renderKeyboard();
@@ -521,7 +515,7 @@
 
     if (rows[activeRowIndex].phase === "check") {
       if (activeRowIndex === ROW_COUNT - 1) {
-        showToast("Five rows are complete. Tap a remaining word to copy it for your sixth Wordle guess.");
+        showToast("Five rows are complete. Use a remaining word for your sixth Wordle guess.");
         return;
       }
       confirmAndAdvance();
@@ -574,25 +568,8 @@
     updateApp();
   }
 
-  async function copyCandidate(word) {
-    try {
-      if (typeof navigator.clipboard?.writeText !== "function") throw new Error("Clipboard is unavailable.");
-      await navigator.clipboard.writeText(word);
-    } catch {
-      clipboardWord.textContent = word;
-      clipboardFallback.hidden = false;
-      setGameStatus("");
-    }
-  }
-
-  async function selectCandidate(word) {
+  function selectCandidate(word) {
     if (!canChooseCandidate() || !dictionarySet.has(word)) return;
-
-    const finalRowInCheck = activeRowIndex === ROW_COUNT - 1 && rows[activeRowIndex].phase === "check";
-    if (activeRowIndex === null || finalRowInCheck) {
-      await copyCandidate(word);
-      return;
-    }
 
     if (rows[activeRowIndex].phase === "check") {
       confirmAndAdvance();
@@ -605,7 +582,6 @@
     setGameStatus("");
     updateApp();
     submitGuess();
-    await copyCandidate(word);
   }
 
   function resetGame() {
@@ -616,8 +592,6 @@
     rows = makeEmptyRows();
     activeRowIndex = 0;
     wordsVisible = false;
-    clipboardFallback.hidden = true;
-    clipboardWord.textContent = "";
     setGameStatus("Enter a five-letter word to begin.");
     updateApp();
   }
