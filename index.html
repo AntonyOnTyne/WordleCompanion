@@ -27,7 +27,7 @@
 
     <section class="game-card" aria-label="Wordle companion board">
       <section class="board-section" aria-label="Guess board">
-        <div class="board" id="board" role="group" aria-label="Six guess rows"></div>
+        <div class="board" id="board" role="group" aria-label="Five guess rows"></div>
       </section>
 
       <section class="keyboard" id="keyboard" aria-label="On-screen keyboard"></section>
@@ -46,6 +46,7 @@
 
       <div class="action-area">
         <p class="game-status" id="game-status" aria-live="polite">Loading dictionary…</p>
+        <p class="clipboard-fallback" id="clipboard-fallback" role="status" aria-live="polite" hidden>Clipboard access isn’t available. Copy <strong id="clipboard-word"></strong> manually for your sixth Wordle guess.</p>
         <button class="reset-button" id="reset-button" type="button" disabled>Reset</button>
       </div>
     </section>
@@ -86,8 +87,8 @@
           <h3 id="words-heading">Narrow the list</h3>
           <ul>
             <li>The eliminated and remaining word counts update after each valid guess and every tile-colour change.</li>
-            <li>Choose Show words to view the remaining words alphabetically in a scrollable list. Tap a word to submit it as your next guess.</li>
-            <li>Enter your next word or tap one from the list.</li>
+            <li>Choose Show words to view the remaining words alphabetically in a scrollable list. Tap a word to submit it as your next companion guess.</li>
+            <li>After five rows, tap a remaining word to copy it for your sixth Wordle guess.</li>
           </ul>
         </section>
       </div>

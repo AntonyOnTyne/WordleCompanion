@@ -289,6 +289,8 @@ html.gameplay-active { touch-action: pan-x pan-y; }
 
 .action-area { margin-top: 14px; text-align: center; }
 .game-status { min-height: 17px; margin: 0 0 10px; color: var(--muted); font-size: 11px; }
+.clipboard-fallback { margin: 0 0 10px; padding: 10px 12px; border: 1px solid #d6c58a; border-radius: 9px; background: #f5f0dc; color: var(--ink); font-size: 12px; line-height: 1.5; }
+.clipboard-fallback strong { display: block; margin-top: 4px; color: var(--accent); font-size: 20px; letter-spacing: .12em; }
 
 .reset-button {
   min-height: 42px;
@@ -351,9 +353,9 @@ button:focus-visible, a:focus-visible {
   .close-instructions { width: 36px; height: 36px; flex-basis: 36px; }
   .game-card { padding: 12px 17px 18px; border-radius: 16px; }
   .board-section { margin-top: 0; }
-  .board { width: min(64%, 228px); gap: 3px; }
-  .guess-row { gap: 3px; }
-  .tile { border-width: 1px; border-radius: 4px; font-size: clamp(12px, 3.2vw, 16px); }
+  .board { width: min(70.4%, 251px); gap: 3.3px; }
+  .guess-row { gap: 3.3px; }
+  .tile { border-width: 1px; border-radius: 4.4px; font-size: clamp(13.2px, 3.52vw, 17.6px); }
   .keyboard { gap: 7px; margin-top: 18px; }
   .keyboard-row { gap: 3px; }
   .keyboard-row:nth-child(2) { padding-inline: 4%; }
