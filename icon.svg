@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="24" fill="#f7f5ef"/>
+  <rect x="8" y="8" width="54" height="54" rx="10" fill="#fffefa" stroke="#d9dcd6" stroke-width="3"/>
+  <rect x="66" y="8" width="54" height="54" rx="10" fill="#787c7e"/>
+  <rect x="8" y="66" width="54" height="54" rx="10" fill="#92791f"/>
+  <rect x="66" y="66" width="54" height="54" rx="10" fill="#477845"/>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="35" font-weight="800" text-anchor="middle" dominant-baseline="central">
+    <text x="35" y="36" fill="#202522">W</text>
+    <text x="93" y="36" fill="#ffffff">O</text>
+    <text x="35" y="94" fill="#ffffff">R</text>
+    <text x="93" y="94" fill="#ffffff">D</text>
+  </g>
+</svg>
